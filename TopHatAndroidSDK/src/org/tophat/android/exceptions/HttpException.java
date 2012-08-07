@@ -52,7 +52,7 @@ public class HttpException extends Exception {
 			
 			if (parsedError.containsKey(ERROR_CODE_KEY))
 			{
-				this.statusCode = Integer.parseInt((String)parsedError.get(ERROR_CODE_KEY));
+				this.statusCode = (Integer)parsedError.get(ERROR_CODE_KEY);
 				this.statusMessage = (String)parsedError.get(ERROR_MSG_KEY);
 			}
 		}
