@@ -70,7 +70,9 @@ public class TopHatHttpClient
 	 */
 	public void connect() {
 
-		host = apic.getConstants().API_URL;
+		host = apic.getConstants().getAPI_URL();
+		System.err.println("HOST "+ apic.getConstants().getAPI_URL());
+		
 		
 		HostnameVerifier hostnameVerifier = org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
 	     
@@ -78,7 +80,7 @@ public class TopHatHttpClient
 	
 		HttpsURLConnection.setDefaultHostnameVerifier(hostnameVerifier);
 		
-		HttpProtocolParams.setUserAgent( http.getParams(), apic.getConstants().USER_AGENT + " "+ apic.getConstants().APP_VERSION );
+		HttpProtocolParams.setUserAgent( http.getParams(), apic.getConstants().getUSER_AGENT() + " "+ apic.getConstants().getAPP_VERSION() );
 	}
 
 	/**

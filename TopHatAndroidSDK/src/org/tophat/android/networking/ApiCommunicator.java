@@ -31,6 +31,8 @@ public class ApiCommunicator
 	 */
 	public ApiCommunicator(Constants c)
 	{	
+		this.c = c;
+		
 		this.http = new TopHatHttpClient(this);
 		
 		this.json = new JsonParser();
