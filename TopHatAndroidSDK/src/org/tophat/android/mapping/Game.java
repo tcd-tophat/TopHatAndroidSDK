@@ -15,7 +15,7 @@ import android.os.Parcelable;
  */
 public class Game extends Mapping implements Parcelable {
 	
-	private static String API_URI = "apitokens";
+	private static String API_URI = "games";
 	private User creator;
 	private String time;
 	private String name;

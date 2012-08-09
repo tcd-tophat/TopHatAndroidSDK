@@ -14,6 +14,7 @@ import android.os.Parcelable;
  */
 public class User extends Mapping implements Parcelable {
 
+	private static String API_URI = "users";
 	private String name;
 	private String email;
 	private String created;

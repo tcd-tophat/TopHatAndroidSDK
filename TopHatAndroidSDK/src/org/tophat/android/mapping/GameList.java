@@ -13,6 +13,8 @@ import android.os.Parcelable;
  */
 public class GameList extends Mapping implements Parcelable{
 	
+	public static String API_URI = "games";
+	
 	private Integer maxPerpage;
 	/**
 	 * @return the maxPerpage
