@@ -3,6 +3,7 @@ package org.tophat.android.mapping;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import android.os.Parcel;
@@ -111,16 +112,16 @@ public class Game extends Mapping implements Parcelable {
 
 	// Parcelling part
 	public Game(Parcel in){
-		ArrayList<String> data = in.readArrayList(ArrayList.class.getClassLoader());
+		ArrayList<String> data = new ArrayList<String>();
+				
+		in.readStringList(data);
 		
 		this.setName(data.get(0));
 		this.setTime(data.get(1));
 		this.setId(Integer.parseInt(data.get(2)));
 		
-		Parcelable[] objs = in.readParcelableArray(Parcelable.class.getClassLoader());
-		
-		this.setCreator((User)objs[0]);
-		this.setGameType((GameType)objs[1]);
+		this.setCreator((User)in.readParcelable(User.class.getClassLoader()));
+		this.setGameType((GameType)in.readParcelable(GameType.class.getClassLoader()));
 	}
 
 	@Override
@@ -139,12 +140,8 @@ public class Game extends Mapping implements Parcelable {
 		
 		dest.writeStringList(data);
 		
-		Parcelable[] objs = new Parcelable[2];
-		
-		objs[0] = this.getCreator();
-		objs[1] = this.getGameType();
-		
-		dest.writeParcelableArray(objs, 0);
+		dest.writeParcelable(this.getCreator(), 0);
+		dest.writeParcelable(this.getGameType(), 0);
 	}
 	
     /**

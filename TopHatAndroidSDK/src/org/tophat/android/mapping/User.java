@@ -135,13 +135,17 @@ public class User extends Mapping implements Parcelable {
 	
 	// Parcelling part
 	public User(Parcel in){
-		ArrayList<String> data = in.readArrayList(ArrayList.class.getClassLoader());
-		
+		ArrayList<String> data = new ArrayList<String>();
+				
+		in.readStringList(data);
+
 		this.setName(data.get(0));
 		this.setEmail(data.get(1));
 		this.setId(Integer.parseInt(data.get(2)));
 		
-		in.readList(this.joinedGames, ArrayList.class.getClassLoader());
+		this.joinedGames = new ArrayList<Game>();
+		
+		in.readList(this.joinedGames, Game.class.getClassLoader());
 	}
 
 	@Override

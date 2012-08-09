@@ -1,5 +1,6 @@
 package org.tophat.android.mapping;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import android.os.Parcel;
@@ -18,8 +19,8 @@ public class GameType extends Mapping implements Parcelable {
 	
 	public GameType(Parcel in)
 	{
-		this.setId(null);
-		this.setName(null);
+		this.setName(in.readString());
+		this.setId(in.readInt());
 	}
 
 	/**
@@ -55,8 +56,8 @@ public class GameType extends Mapping implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
-		// TODO Auto-generated method stub
-		
+		dest.writeString(this.getName());
+		dest.writeInt(this.getId());
 	}
 	
     /**
