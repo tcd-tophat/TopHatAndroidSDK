@@ -117,9 +117,14 @@ public class GameList extends Mapping implements Parcelable{
 
    	public GameList(Parcel in)
    	{
-   		this.setGames(new ArrayList<Game>());
-   		this.setMaxPerpage(null);
-   		this.setPaginationOffset(null);
+   		this.setMaxPerpage(in.readInt());
+   		this.setPaginationOffset(in.readInt());
+   		
+   		ArrayList<Game> games = new ArrayList<Game>();
+   		
+   		in.readList(games, Game.class.getClassLoader());
+   		
+   		this.setGames(games);
    	}
    	
 	@Override
@@ -130,7 +135,10 @@ public class GameList extends Mapping implements Parcelable{
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
-		// TODO Auto-generated method stub
 		
+		dest.writeInt(this.getMaxPerpage());
+		dest.writeInt(this.getPaginationOffset());
+		
+		dest.writeList(this.getGames());
 	}
 }
