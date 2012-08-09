@@ -126,24 +126,34 @@ public class ApiCommunicator
 			throw new BadResponse();
 		}
 	}
+
+	public Map<String, Object> post(String uri, HashMap<String, String> map) throws HttpException
+	{
+		return this.post(uri, json.toJson(map));
+	}
 	
+	public Map<String, Object> post(String uri, Mapping m) throws HttpException
+	{
+		return this.post(uri, json.toJson(m));
+	}
+
 	/**
 	 * 
 	 * @param uri
 	 * @return
 	 * @throws HttpException
 	 */
-	public Map<String, Object> post(String uri, HashMap<String, String> data) throws HttpException
+	private Map<String, Object> post(String uri, String data) throws HttpException
 	{
 		String input;
 		
 		if(this.getApitoken() != null )
 		{
-			input = http.post(uri+"?apitoken="+this.getApitoken().getApitoken(), json.toJson(data));
+			input = http.post(uri+"?apitoken="+this.getApitoken().getApitoken(), data);
 		}
 		else
 		{
-			input = http.post(uri, json.toJson(data));
+			input = http.post(uri, data);
 		}
 		
 		if( input == null || input.equals("") )

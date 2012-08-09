@@ -25,6 +25,19 @@ public class Mapper {
 		return this.creator(this.getApiCommunicator().get(m.getAccessUrl()+"/"+m.getId()));
 	}
 	
+	public boolean create(Mapping m) throws HttpException
+	{
+		if ( m.getId() == null )
+		{
+			this.getApiCommunicator().post(m.getAccessUrl(), m);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 	public boolean update(Mapping m) throws HttpException
 	{
 		if ( m.getId() != null )
