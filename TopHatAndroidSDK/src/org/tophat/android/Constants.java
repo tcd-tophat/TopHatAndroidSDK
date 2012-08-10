@@ -35,8 +35,8 @@ public class Constants {
 	/**
 	 * @param dATA_STREAM the dATA_STREAM to set
 	 */
-	public void setDATA_STREAM(int dATA_STREAM) {
-		DATA_STREAM = dATA_STREAM;
+	public void setDATA_STREAM(int dataStream) {
+		DATA_STREAM = dataStream;
 	}
 
 	/**
@@ -49,8 +49,8 @@ public class Constants {
 	/**
 	 * @param rECONNECTION_DELAY the rECONNECTION_DELAY to set
 	 */
-	public void setRECONNECTION_DELAY(int rECONNECTION_DELAY) {
-		RECONNECTION_DELAY = rECONNECTION_DELAY;
+	public void setRECONNECTION_DELAY(int reconDelay) {
+		RECONNECTION_DELAY = reconDelay;
 	}
 
 	/**
@@ -63,8 +63,8 @@ public class Constants {
 	/**
 	 * @param fACEBOOK_APP_ID the fACEBOOK_APP_ID to set
 	 */
-	public void setFACEBOOK_APP_ID(String fACEBOOK_APP_ID) {
-		FACEBOOK_APP_ID = fACEBOOK_APP_ID;
+	public void setFACEBOOK_APP_ID(String fbId) {
+		FACEBOOK_APP_ID = fbId;
 	}
 
 	/**
@@ -77,8 +77,8 @@ public class Constants {
 	/**
 	 * @param uSER_AGENT the uSER_AGENT to set
 	 */
-	public void setUSER_AGENT(String uSER_AGENT) {
-		USER_AGENT = uSER_AGENT;
+	public void setUSER_AGENT(String userAgent) {
+		USER_AGENT = userAgent;
 	}
 
 	/**
@@ -91,8 +91,8 @@ public class Constants {
 	/**
 	 * @param aPP_VERSION the aPP_VERSION to set
 	 */
-	public void setAPP_VERSION(String aPP_VERSION) {
-		APP_VERSION = aPP_VERSION;
+	public void setAPP_VERSION(String appVersion) {
+		APP_VERSION = appVersion;
 	}
 
 	/**
@@ -105,8 +105,8 @@ public class Constants {
 	/**
 	 * @param aPI_URL the aPI_URL to set
 	 */
-	public void setAPI_URL(String aPI_URL) {
-		API_URL = aPI_URL;
+	public void setAPI_URL(String apiUrl) {
+		API_URL = apiUrl;
 	}
 
 	/**
@@ -119,8 +119,8 @@ public class Constants {
 	/**
 	 * @param sIGNIN_ACTIVITY the sIGNIN_ACTIVITY to set
 	 */
-	public void setSIGNIN_ACTIVITY(int sIGNIN_ACTIVITY) {
-		SIGNIN_ACTIVITY = sIGNIN_ACTIVITY;
+	public void setSIGNIN_ACTIVITY(int signAct) {
+		SIGNIN_ACTIVITY = signAct;
 	}
 
 	/**
@@ -133,8 +133,8 @@ public class Constants {
 	/**
 	 * @param mENU_ACTIVITY the mENU_ACTIVITY to set
 	 */
-	public void setMENU_ACTIVITY(int mENU_ACTIVITY) {
-		MENU_ACTIVITY = mENU_ACTIVITY;
+	public void setMENU_ACTIVITY(int menuAct) {
+		MENU_ACTIVITY = menuAct;
 	}
 
 	/**
@@ -147,8 +147,8 @@ public class Constants {
 	/**
 	 * @param tRUST_UNSIGNED_SSL_CERTS the tRUST_UNSIGNED_SSL_CERTS to set
 	 */
-	public void setTRUST_UNSIGNED_SSL_CERTS(boolean tRUST_UNSIGNED_SSL_CERTS) {
-		TRUST_UNSIGNED_SSL_CERTS = tRUST_UNSIGNED_SSL_CERTS;
+	public void setTRUST_UNSIGNED_SSL_CERTS(boolean trust) {
+		TRUST_UNSIGNED_SSL_CERTS = trust;
 	}
 
 	private int SIGNIN_ACTIVITY;

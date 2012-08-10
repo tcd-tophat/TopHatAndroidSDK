@@ -132,6 +132,7 @@ public class ApiCommunicator
 		return this.post(uri, json.toJson(map));
 	}
 	
+	
 	public Map<String, Object> post(String uri, Mapping m) throws HttpException
 	{
 		return this.post(uri, json.toJson(m));
