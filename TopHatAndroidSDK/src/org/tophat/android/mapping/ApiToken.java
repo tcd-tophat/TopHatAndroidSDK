@@ -9,11 +9,13 @@ public class ApiToken extends Mapping implements Parcelable {
 	
 	private static String API_URI = "apitokens";
 	private String apitoken;
+	private User user;
 	
 	
 	public ApiToken()
 	{
 		this.apitoken = null;
+		this.user = null;
 		this.setAccessUrl("apitoken");
 	}
 	
@@ -25,11 +27,18 @@ public class ApiToken extends Mapping implements Parcelable {
 		{
 			this.apitoken = (String) apitoken.get("apitoken");
 		}
+		
+		if(apitoken.containsKey("user"))
+		{
+			this.user = new User((Map<String, Object>)apitoken.get("user"));
+		}
 	}
 
 	// Parcelling part
 	public ApiToken(Parcel in){
 		this.setApitoken(in.readString());
+		
+		this.setUser((User)in.readParcelable(User.class.getClassLoader()));
 	}
 
 	@Override
@@ -41,6 +50,8 @@ public class ApiToken extends Mapping implements Parcelable {
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		dest.writeString(this.getApitoken());
+		
+		dest.writeParcelable(this.getUser(), 0);
 	}
 	
     /**
@@ -55,6 +66,20 @@ public class ApiToken extends Mapping implements Parcelable {
 	 */
 	public void setApitoken(String apitoken) {
 		this.apitoken = apitoken;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	/**
