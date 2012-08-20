@@ -9,7 +9,9 @@ import org.apache.http.util.EntityUtils;
 import org.tophat.android.exceptions.Forbidden;
 import org.tophat.android.exceptions.HttpException;
 import org.tophat.android.exceptions.NotFound;
+import org.tophat.android.exceptions.ServerError;
 import org.tophat.android.exceptions.Unauthorised;
+import org.tophat.android.exceptions.Unimplemented;
 
 public class ResponseProcessor {
 
@@ -36,6 +38,14 @@ public class ResponseProcessor {
 		{
 			throw new NotFound(entityToString(entity));
 		}
+		else if ( response.getStatusLine().getStatusCode() == 500 )
+		{
+			throw new ServerError(entityToString(entity));
+		}
+		else if ( response.getStatusLine().getStatusCode() == 501 )
+		{
+			throw new Unimplemented(entityToString(entity));
+		}		
 		else
 		{
 			throw new HttpException("HTTP Error"+response.getStatusLine().getStatusCode(), entityToString(entity));
