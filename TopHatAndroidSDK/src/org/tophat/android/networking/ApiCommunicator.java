@@ -42,58 +42,6 @@ public class ApiCommunicator
 	}
 
 	/**
-	 * Returns true when the login details are correct and the API is reachable. Otherwise returns false.
-	 * @param user
-	 * @param pass
-	 * @return
-	 */
-	/*public GameList games()
-	{
-		//Prepare the response (reset error codes set)
-		this.prepare();
-		
-		try
-		{	
-			String input = http.get("games/?apitoken="+this.getApikey());
-			
-			if( input == null || input.equals("") )
-			{
-				this.setApiError("The API returned invalid data or the connection failed.");
-			}
-			
-			Map<String, Object> mapping = json.getObjects(input);
-			
-			for( String s : mapping.keySet() )
-			{
-				
-				if (s.equals("games"))
-				{
-					return new GameList((Map<String, Object>) mapping);
-				}
-				else if(s.equals("error_message"))
-				{
-					this.setApiError((String) mapping.get("error_message"));
-				}
-				else if(s.equals("error_code"))
-				{
-					if( (Integer) mapping.get("error_code") == 401)
-					{
-						if (this.getApiError() == null)
-							this.setApiError("Unauthorised");
-					}
-				}			
-			}
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			this.setApiError("The API returned invalid data.");
-			return null;
-		}
-		return null;
-	}*/
-	
-	/**
 	 * 
 	 * @param uri
 	 * @return
@@ -127,15 +75,9 @@ public class ApiCommunicator
 		}
 	}
 
-	public Map<String, Object> post(String uri, HashMap<String, String> map) throws HttpException
+	public Map<String, Object> post(String uri, Map<String, Object> map) throws HttpException
 	{
 		return this.post(uri, json.toJson(map));
-	}
-	
-	
-	public Map<String, Object> post(String uri, Mapping m) throws HttpException
-	{
-		return this.post(uri, json.toJson(m));
 	}
 
 	/**
@@ -178,17 +120,17 @@ public class ApiCommunicator
 	 * @return
 	 * @throws HttpException
 	 */
-	public Map<String, Object> put(String uri, Mapping data) throws HttpException
+	public Map<String, Object> put(String uri, Map<String, Object> map) throws HttpException
 	{
 		String input;
 		
 		if(this.getApitoken() != null )
 		{
-			input = http.put(uri+"?apitoken="+this.getApitoken().getApitoken(), json.toJson(data));
+			input = http.put(uri+"?apitoken="+this.getApitoken().getApitoken(), json.toJson(map));
 		}
 		else
 		{
-			input = http.put(uri, json.toJson(data));
+			input = http.put(uri, json.toJson(map));
 		}
 		
 		if( input == null || input.equals("") )
