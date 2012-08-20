@@ -29,7 +29,7 @@ public class Mapper {
 	{
 		if ( m.getId() == null )
 		{
-			this.getApiCommunicator().post(m.getAccessUrl(), m);
+			this.getApiCommunicator().post(m.getAccessUrl(), m.getMap());
 			return true;
 		}
 		else
@@ -42,7 +42,7 @@ public class Mapper {
 	{
 		if ( m.getId() != null )
 		{
-			this.getApiCommunicator().put(m.getAccessUrl(), m);
+			this.getApiCommunicator().put(m.getAccessUrl(), m.getMap());
 			return true;
 		}
 		else
