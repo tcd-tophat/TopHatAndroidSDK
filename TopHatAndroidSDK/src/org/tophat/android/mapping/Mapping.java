@@ -17,6 +17,11 @@ public class Mapping {
 		this.data = data;
 	}
 	
+	public Map<String, Object> getMap()
+	{
+		return data;
+	}
+	
 	/**
 	 * This method is used in particular to get dynamic attributes that have been added by the developer to the server side but are unavailable via standard mapping in java/android
 	 * @param key
@@ -68,6 +73,8 @@ public class Mapping {
 	 */
 	public void setId(Integer id) {
 		this.id = id;
+		
+		this.setAttribute("id", id);
 	}
 
 	/**

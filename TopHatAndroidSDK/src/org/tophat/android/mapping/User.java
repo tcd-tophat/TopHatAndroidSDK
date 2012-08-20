@@ -83,6 +83,8 @@ public class User extends Mapping implements Parcelable {
 	 */
 	public void setName(String name) {
 		this.name = name;
+		
+		this.setAttribute("name", name);
 	}
 
 
@@ -99,6 +101,8 @@ public class User extends Mapping implements Parcelable {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
+		
+		this.setAttribute("email", email);
 	}
 
 
@@ -115,6 +119,8 @@ public class User extends Mapping implements Parcelable {
 	 */
 	public void setCreated(String created) {
 		this.created = created;
+		
+		this.setAttribute("created", created);
 	}
 
 
@@ -131,6 +137,16 @@ public class User extends Mapping implements Parcelable {
 	 */
 	public void setJoinedGames(ArrayList<Game> joinedGames) {
 		this.joinedGames = joinedGames;
+		
+		ArrayList<Map<String, Object>> gamesMap = new ArrayList<Map<String, Object>>();
+		
+		//Loop through a list of games and provide this for the attribute map.
+		for(Game game : joinedGames)
+		{
+			gamesMap.add(game.getMap());
+		}
+		
+		this.setAttribute("joined_games", gamesMap);
 	}
 	
 	// Parcelling part

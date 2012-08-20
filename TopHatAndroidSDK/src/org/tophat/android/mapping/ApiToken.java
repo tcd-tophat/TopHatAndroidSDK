@@ -7,7 +7,7 @@ import android.os.Parcelable;
 
 public class ApiToken extends Mapping implements Parcelable {
 	
-	private static String API_URI = "apitokens";
+	public static String API_URI = "apitokens";
 	private String apitoken;
 	private User user;
 	
@@ -66,6 +66,9 @@ public class ApiToken extends Mapping implements Parcelable {
 	 */
 	public void setApitoken(String apitoken) {
 		this.apitoken = apitoken;
+		
+		//Set the attribute in the mapping in addition to the variable in the local class
+		this.setAttribute("apitoken", apitoken);
 	}
 
 	/**
@@ -80,6 +83,7 @@ public class ApiToken extends Mapping implements Parcelable {
 	 */
 	public void setUser(User user) {
 		this.user = user;
+		this.setAttribute("user", user.getMap());
 	}
 
 	/**

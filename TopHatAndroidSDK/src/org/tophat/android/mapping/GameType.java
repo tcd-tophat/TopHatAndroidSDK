@@ -35,6 +35,8 @@ public class GameType extends Mapping implements Parcelable {
 	 */
 	public void setName(String name) {
 		this.name = name;
+		
+		this.setAttribute("name", name);
 	}
 
 	public GameType(Map<String, Object> gametype)

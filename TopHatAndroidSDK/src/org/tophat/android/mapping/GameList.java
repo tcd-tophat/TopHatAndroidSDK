@@ -1,6 +1,7 @@
 package org.tophat.android.mapping;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import android.os.Parcel;
@@ -28,6 +29,8 @@ public class GameList extends Mapping implements Parcelable{
 	 */
 	public void setMaxPerpage(Integer maxPerpage) {
 		this.maxPerpage = maxPerpage;
+		
+		this.setAttribute("max_perpage", maxPerpage);
 	}
 
 	/**
@@ -42,6 +45,8 @@ public class GameList extends Mapping implements Parcelable{
 	 */
 	public void setPaginationOffset(Integer paginationOffset) {
 		this.paginationOffset = paginationOffset;
+		
+		this.setAttribute("pagination_offset", paginationOffset);
 	}
 
 	/**
@@ -56,6 +61,16 @@ public class GameList extends Mapping implements Parcelable{
 	 */
 	public void setGames(ArrayList<Game> games) {
 		this.games = games;
+		
+		ArrayList<Map<String, Object>> gamesMap = new ArrayList<Map<String, Object>>();
+		
+		//Loop through a list of games and provide this for the attribute map.
+		for(Game game : games)
+		{
+			gamesMap.add(game.getMap());
+		}
+		
+		this.setAttribute("games", gamesMap);
 	}
 
 	private Integer paginationOffset;

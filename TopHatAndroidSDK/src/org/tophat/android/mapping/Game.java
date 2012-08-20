@@ -69,6 +69,8 @@ public class Game extends Mapping implements Parcelable {
 	 */
 	public void setCreator(User creator) {
 		this.creator = creator;
+		
+		this.setAttribute("user", creator.getMap());
 	}
 
 
@@ -85,6 +87,8 @@ public class Game extends Mapping implements Parcelable {
 	 */
 	public void setTime(String time) {
 		this.time = time;
+		
+		this.setAttribute("time", time);
 	}
 
 	/**
@@ -100,6 +104,8 @@ public class Game extends Mapping implements Parcelable {
 	 */
 	public void setName(String name) {
 		this.name = name;
+		
+		this.setAttribute("name", name);
 	}
 
 
