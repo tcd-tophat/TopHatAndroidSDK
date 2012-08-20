@@ -1,12 +1,22 @@
 package org.tophat.android.model;
 
+import java.util.Map;
+
+import org.tophat.android.mapping.User;
 import org.tophat.android.networking.ApiCommunicator;
 
-public class UserMapper extends Mapper {
+public class UserMapper extends Mapper 
+{
 
-	public UserMapper(ApiCommunicator apic) {
+	public UserMapper(ApiCommunicator apic) 
+	{
 		super(apic);
-		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	protected User creator(Map<String, Object> data)
+	{
+		return new User(data);
 	}
 
 }
