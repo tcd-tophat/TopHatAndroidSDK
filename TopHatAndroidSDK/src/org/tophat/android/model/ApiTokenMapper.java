@@ -29,7 +29,7 @@ public class ApiTokenMapper extends Mapper
 		map.put("email", username);
 		map.put("password", password);
 		
-		return new ApiToken(this.getApiCommunicator().post(ApiToken.API_URI+"/", (Map)map));
+		return new ApiToken(this.getApiCommunicator().post(ApiToken.API_URI, (Map)map));
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public class ApiTokenMapper extends Mapper
 	 */
 	public ApiToken getAnonymousToken() throws HttpException
 	{
-		return new ApiToken(this.getApiCommunicator().post(ApiToken.API_URI+"/", (Map)new HashMap<String, Object>()));
+		return new ApiToken(this.getApiCommunicator().post(ApiToken.API_URI, (Map)new HashMap<String, Object>()));
 	}
 	
 	@Override

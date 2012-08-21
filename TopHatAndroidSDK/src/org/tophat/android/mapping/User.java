@@ -41,11 +41,7 @@ public class User extends Mapping implements Parcelable {
 	{
 		super (user);
 		
-		this.setId(null);
-		this.setName(null);
-		this.setCreated(null);
-		this.setEmail(null);
-		this.setJoinedGames(new ArrayList<Game>());
+		this.joinedGames = new ArrayList<Game>();
 		
 		if (user.containsKey("id"))
 			this.setId((Integer)user.get("id"));
@@ -200,7 +196,11 @@ public class User extends Mapping implements Parcelable {
 		
 		data.add(this.getName());
 		data.add(this.getEmail());
-		data.add(this.getId().toString());
+		
+		if (this.getId() != null)
+			data.add(this.getId().toString());
+		else
+			data.add(null);
 		
 		dest.writeStringList(data);
 		

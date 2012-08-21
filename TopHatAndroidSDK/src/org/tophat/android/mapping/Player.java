@@ -101,15 +101,6 @@ public class Player extends Mapping implements Parcelable {
 	{
 		super (player);
 		
-		this.setId(null);
-		this.setName(null);
-		this.setGame(null);
-		this.setLatitude(null);
-		this.setLongitude(null);
-		this.setScore(null);
-		this.setTime(null);
-		this.setUser(null);
-		
 		if (player.containsKey("id"))
 			this.setId((Integer)player.get("id"));
 		

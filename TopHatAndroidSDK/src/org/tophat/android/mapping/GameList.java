@@ -86,8 +86,8 @@ public class GameList extends Mapping implements Parcelable{
 	public GameList(Map<String, Object> gamelist)
 	{
 		super(gamelist);
-		
-		this.setGames(new ArrayList<Game>());
+			
+		this.games = new ArrayList<Game>();
 		
 		if (gamelist.containsKey("pagination_offset"))
 			this.setPaginationOffset((Integer)gamelist.get("pagination_offset"));
@@ -101,7 +101,14 @@ public class GameList extends Mapping implements Parcelable{
 			
 			for(Map<String, Object> game : games)
 			{
-				this.games.add(new Game(game));
+				try
+				{
+					this.games.add(new Game(game));
+				}
+				catch(NullPointerException nep)
+				{
+					nep.printStackTrace();
+				}
 			}
 		}
 	}
