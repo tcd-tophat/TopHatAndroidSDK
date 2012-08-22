@@ -10,6 +10,7 @@ public class Mapping {
 	public Mapping()
 	{
 		this.data = new HashMap<String, Object>();
+		this.setId(null);
 	}
 	
 	public Mapping(Map<String, Object> data)
