@@ -26,11 +26,7 @@ public class User extends Mapping implements Parcelable {
 	 */
 	public User()
 	{
-		this.setId(null);
-		this.setName(null);
-		this.setCreated(null);
-		this.setEmail(null);
-		this.setJoinedGames(new ArrayList<Game>());
+		super();
 	}
 	
 	/**

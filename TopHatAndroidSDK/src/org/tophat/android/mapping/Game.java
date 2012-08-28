@@ -24,11 +24,7 @@ public class Game extends Mapping implements Parcelable {
 	
 	public Game()
 	{
-		this.setCreator(null);
-		this.setTime(null);
-		this.setId(null);
-		this.setName(null);
-		this.setGameType(null);
+		super();
 	}
 	
 	private void setGameType(GameType gametype) {

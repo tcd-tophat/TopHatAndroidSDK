@@ -13,8 +13,7 @@ public class GameType extends Mapping implements Parcelable {
 	
 	public GameType()
 	{
-		this.setId(null);
-		this.setName(null);
+		super();
 	}
 	
 	public GameType(Parcel in)

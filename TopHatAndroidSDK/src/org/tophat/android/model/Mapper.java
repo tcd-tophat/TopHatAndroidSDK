@@ -25,29 +25,27 @@ public class Mapper {
 		return this.creator(this.getApiCommunicator().get(m.getAccessUrl()+"/"+m.getId()));
 	}
 	
-	public boolean create(Mapping m) throws HttpException
+	public Mapping create(Mapping m) throws HttpException
 	{
 		if ( m.getId() == null )
 		{
-			this.getApiCommunicator().post(m.getAccessUrl(), m.getMap());
-			return true;
+			return this.creator(this.getApiCommunicator().post(m.getAccessUrl(), m.getMap()));
 		}
 		else
 		{
-			return false;
+			return null;
 		}
 	}
 	
-	public boolean update(Mapping m) throws HttpException
+	public Mapping update(Mapping m) throws HttpException
 	{
 		if ( m.getId() != null )
 		{
-			this.getApiCommunicator().put(m.getAccessUrl(), m.getMap());
-			return true;
+			return this.creator(this.getApiCommunicator().put(m.getAccessUrl(), m.getMap()));
 		}
 		else
 		{
-			return false;
+			return null;
 		}
 	}
 	

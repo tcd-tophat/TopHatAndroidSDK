@@ -16,6 +16,4 @@ public class PlayerMapper extends Mapper {
 	{
 		return new Player(data);
 	}
-
-
 }

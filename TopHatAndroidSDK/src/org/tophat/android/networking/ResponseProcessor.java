@@ -8,6 +8,7 @@ import org.apache.http.ParseException;
 import org.apache.http.util.EntityUtils;
 import org.tophat.android.exceptions.Forbidden;
 import org.tophat.android.exceptions.HttpException;
+import org.tophat.android.exceptions.MethodNotAllowed;
 import org.tophat.android.exceptions.NotFound;
 import org.tophat.android.exceptions.ServerError;
 import org.tophat.android.exceptions.Unauthorised;
@@ -38,6 +39,10 @@ public class ResponseProcessor {
 		{
 			throw new NotFound(entityToString(entity));
 		}
+		else if ( response.getStatusLine().getStatusCode() == 405 )
+		{
+			throw new MethodNotAllowed(entityToString(entity));
+		}
 		else if ( response.getStatusLine().getStatusCode() == 500 )
 		{
 			throw new ServerError(entityToString(entity));
@@ -48,7 +53,7 @@ public class ResponseProcessor {
 		}		
 		else
 		{
-			throw new HttpException("HTTP Error"+response.getStatusLine().getStatusCode(), entityToString(entity));
+			throw new HttpException("HTTP Error "+response.getStatusLine().getStatusCode(), entityToString(entity));
 		}
 	}
 	
