@@ -6,7 +6,7 @@ import org.tophat.android.exceptions.HttpException;
 import org.tophat.android.mapping.Mapping;
 import org.tophat.android.networking.ApiCommunicator;
 
-public class Mapper {
+public abstract class Mapper {
 
 	private ApiCommunicator apic;
 

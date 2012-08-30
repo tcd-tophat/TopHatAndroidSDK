@@ -16,7 +16,6 @@ public class ApiToken extends Mapping implements Parcelable {
 	{
 		this.apitoken = null;
 		this.user = null;
-		this.setAccessUrl(API_URI);
 	}
 	
 	public ApiToken(Map<String, Object> apitoken)

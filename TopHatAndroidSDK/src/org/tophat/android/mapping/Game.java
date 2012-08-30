@@ -34,7 +34,6 @@ public class Game extends Mapping implements Parcelable {
 	public Game(Map<String, Object> game)
 	{
 		super(game);
-		this.setAccessUrl(API_URI);
 		
 		if (game.containsKey("id"))
 			this.setId((Integer)game.get("id"));
@@ -63,7 +62,13 @@ public class Game extends Mapping implements Parcelable {
 	/**
 	 * @param creator the creator to set
 	 */
-	public void setCreator(User creator) {
+	public void setCreator(User creator)
+	{
+		if(creator != null)
+		{
+			creator = new User();
+		}
+		
 		this.creator = creator;
 		
 		this.setAttribute("user", creator.getMap());
@@ -73,7 +78,8 @@ public class Game extends Mapping implements Parcelable {
 	/**
 	 * @return the time
 	 */
-	public String getTime() {
+	public String getTime() 
+	{
 		return time;
 	}
 

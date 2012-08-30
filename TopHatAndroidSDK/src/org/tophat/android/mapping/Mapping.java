@@ -6,20 +6,28 @@ import java.util.Map;
 public class Mapping {
 	
 	private Map<String, Object> data;
+	private static String API_URI;
 
 	public Mapping()
 	{
 		this.data = new HashMap<String, Object>();
 		this.setId(null);
+		this.setAccessUrl(API_URI);
 	}
 	
 	public Mapping(Map<String, Object> data)
 	{
+		this.setAccessUrl(API_URI);
 		this.data = data;
 	}
 	
 	public Map<String, Object> getMap()
 	{
+		if( this.data == null)
+		{
+			this.data = new HashMap<String, Object>();
+		}
+		
 		return data;
 	}
 	

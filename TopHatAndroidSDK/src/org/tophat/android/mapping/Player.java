@@ -38,6 +38,8 @@ public class Player extends Mapping implements Parcelable {
 	 */
 	public void setScore(Integer score) {
 		this.score = score;
+		
+		this.setAttribute("score", score);
 	}
 
 	/**
@@ -52,6 +54,8 @@ public class Player extends Mapping implements Parcelable {
 	 */
 	public void setTime(String time) {
 		this.time = time;
+		
+		this.setAttribute("time", time);
 	}
 
 	/**
@@ -66,6 +70,8 @@ public class Player extends Mapping implements Parcelable {
 	 */
 	public void setUser(User user) {
 		this.user = user;
+		
+		this.setAttribute("user", user.getMap());
 	}
 
 	/**

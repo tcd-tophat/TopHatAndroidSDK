@@ -29,6 +29,8 @@ public class Kill extends Mapping implements Parcelable {
 	 */
 	public void setVictim(Player victim) {
 		this.victim = victim;
+		
+		this.setAttribute("victim", victim);
 	}
 
 	/**
@@ -43,6 +45,8 @@ public class Kill extends Mapping implements Parcelable {
 	 */
 	public void setKiller(Player killer) {
 		this.killer = killer;
+		
+		this.setAttribute("killer", killer);
 	}
 
 	/**
@@ -57,6 +61,7 @@ public class Kill extends Mapping implements Parcelable {
 	 */
 	public void setTime(String time) {
 		this.time = time;
+		this.setAttribute("time", time);
 	}
 
 	/**
@@ -83,7 +88,7 @@ public class Kill extends Mapping implements Parcelable {
 	public Kill()
 	{
 		super();
-		
+		this.setAccessUrl(API_URI);
 		this.setKiller(null);
 		this.setVictim(null);
 		this.setTime(null);
