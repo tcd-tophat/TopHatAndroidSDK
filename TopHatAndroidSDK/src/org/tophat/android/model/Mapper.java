@@ -41,7 +41,7 @@ public abstract class Mapper {
 	{
 		if ( m.getId() != null )
 		{
-			return this.creator(this.getApiCommunicator().put(m.getAccessUrl(), m.getMap()));
+			return this.creator(this.getApiCommunicator().put(m.getAccessUrl()+"/"+m.getId(), m.getMap()));
 		}
 		else
 		{

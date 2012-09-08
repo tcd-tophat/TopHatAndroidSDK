@@ -38,10 +38,7 @@ public class User extends Mapping implements Parcelable {
 		super (user);
 		
 		this.joinedGames = new ArrayList<Game>();
-		
-		if (user.containsKey("id"))
-			this.setId((Integer)user.get("id"));
-		
+
 		if (user.containsKey("created"))
 			this.setCreated((String)user.get("created"));
 		

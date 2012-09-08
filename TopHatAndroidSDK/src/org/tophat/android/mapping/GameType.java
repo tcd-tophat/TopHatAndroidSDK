@@ -42,9 +42,6 @@ public class GameType extends Mapping implements Parcelable {
 	{
 		super(gametype);
 		
-		if (gametype.containsKey("id"))
-			this.setId((Integer)gametype.get("id"));
-		
 		if(gametype.containsKey("name"))
 			this.setName((String)gametype.get("name"));
 	}

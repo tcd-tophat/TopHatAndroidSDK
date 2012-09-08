@@ -103,9 +103,6 @@ public class Kill extends Mapping implements Parcelable {
 	{
 		super (kill);
 		
-		if (kill.containsKey("id"))
-			this.setId((Integer)kill.get("id"));
-		
 		if (kill.containsKey("time"))
 			this.setTime((String)kill.get("time"));
 		

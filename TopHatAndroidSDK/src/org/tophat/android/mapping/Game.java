@@ -35,9 +35,6 @@ public class Game extends Mapping implements Parcelable {
 	{
 		super(game);
 		
-		if (game.containsKey("id"))
-			this.setId((Integer)game.get("id"));
-		
 		if (game.containsKey("time"))
 			this.setTime((String)game.get("time"));
 		

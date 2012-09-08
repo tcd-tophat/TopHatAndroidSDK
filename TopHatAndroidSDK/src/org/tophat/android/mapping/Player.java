@@ -18,6 +18,7 @@ public class Player extends Mapping implements Parcelable {
 	private String name;
 	private String photo;
 	private Game game;
+	private Team team;
 	private Double latitude;
 	private Double longitude;
 	
@@ -124,6 +125,9 @@ public class Player extends Mapping implements Parcelable {
 		
 		if (player.containsKey("user"))
 			this.setUser(new User((Map<String, Object>)player.get("user")));
+		
+		if (player.containsKey("team"))
+			this.setTeam(new Team((Map<String, Object>)player.get("team")));
 	}
 
 	/**
@@ -261,4 +265,19 @@ public class Player extends Mapping implements Parcelable {
 		
 		this.setAttribute("photo", photo);
 	}
+	
+	/**
+	 * @return the team
+	 */
+	public Team getTeam() {
+		return team;
+	}
+
+	/**
+	 * @param team the team to set
+	 */
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
 }
