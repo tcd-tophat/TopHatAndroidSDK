@@ -3,23 +3,38 @@ package org.tophat.android.mapping;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Mapping {
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+public class Mapping
+{
 	
-	private Map<String, Object> data;
+	@JsonIgnore private Map<String, Object> data;
+	private static String API_URI;
 
 	public Mapping()
 	{
 		this.data = new HashMap<String, Object>();
 		this.setId(null);
+		this.setAccessUrl(API_URI);
 	}
 	
 	public Mapping(Map<String, Object> data)
 	{
+		this.setAccessUrl(API_URI);
 		this.data = data;
+		
+		if (data.containsKey("id"))
+			this.setId((Integer)data.get("id"));
 	}
 	
+	@JsonIgnore
 	public Map<String, Object> getMap()
 	{
+		if( this.data == null)
+		{
+			this.data = new HashMap<String, Object>();
+		}
+		
 		return data;
 	}
 	
@@ -28,6 +43,7 @@ public class Mapping {
 	 * @param key
 	 * @return Returns the Object requested, or null, if the object does not exist, or if the data map has not been set.
 	 */
+	@JsonIgnore
 	public Object getAttribute(String key)
 	{
 		if ( this.data != null )
@@ -81,6 +97,7 @@ public class Mapping {
 	/**
 	 * @return the accessUrl
 	 */
+	@JsonIgnore
 	public String getAccessUrl() {
 		return accessUrl;
 	}
@@ -92,6 +109,6 @@ public class Mapping {
 		this.accessUrl = accessUrl;
 	}
 
-	private Integer id;
-	private String accessUrl;
+	protected Integer id;
+	protected String accessUrl;
 }

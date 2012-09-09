@@ -78,9 +78,7 @@ public class GameList extends Mapping implements Parcelable{
 	
 	public GameList()
 	{
-		this.setGames(new ArrayList<Game>());
-		this.setMaxPerpage(null);
-		this.setPaginationOffset(null);
+		super();
 	}
 	
 	public GameList(Map<String, Object> gamelist)

@@ -18,8 +18,9 @@ public class Player extends Mapping implements Parcelable {
 	private String name;
 	private String photo;
 	private Game game;
-	private Float latitude;
-	private Float longitude;
+	private Team team;
+	private Double latitude;
+	private Double longitude;
 	
 	/**
 	 * Provided under the map key of "score" in the highest level, provided as an Integer.
@@ -38,6 +39,8 @@ public class Player extends Mapping implements Parcelable {
 	 */
 	public void setScore(Integer score) {
 		this.score = score;
+		
+		this.setAttribute("score", score);
 	}
 
 	/**
@@ -52,6 +55,8 @@ public class Player extends Mapping implements Parcelable {
 	 */
 	public void setTime(String time) {
 		this.time = time;
+		
+		this.setAttribute("time", time);
 	}
 
 	/**
@@ -66,6 +71,8 @@ public class Player extends Mapping implements Parcelable {
 	 */
 	public void setUser(User user) {
 		this.user = user;
+		
+		this.setAttribute("user", user.getMap());
 	}
 
 	/**
@@ -83,14 +90,8 @@ public class Player extends Mapping implements Parcelable {
 	 */
 	public Player()
 	{
-		this.setId(null);
-		this.setName(null);
-		this.setGame(null);
-		this.setLatitude(null);
-		this.setLongitude(null);
-		this.setScore(null);
-		this.setUser(null);
-		this.setTime(null);
+		super();
+		this.setAccessUrl(this.API_URI);
 	}
 	
 	/**
@@ -108,22 +109,25 @@ public class Player extends Mapping implements Parcelable {
 			this.setTime((String)player.get("time"));
 		
 		if (player.containsKey("longitude"))
-			this.setLongitude(Float.parseFloat((String)player.get("longitude")));
+			this.setLongitude((Double)player.get("longitude"));
 		
 		if (player.containsKey("latitude"))
-			this.setLatitude(Float.parseFloat((String)player.get("latitude")));
+			this.setLatitude((Double)player.get("latitude"));
 		
 		if (player.containsKey("name"))
 			this.setName((String)player.get("name"));
 		
 		if (player.containsKey("score"))
-			this.setScore(Integer.parseInt((String)player.get("score")));
+			this.setScore((Integer)player.get("score"));
 		
 		if (player.containsKey("game"))
 			this.setGame(new Game((Map<String, Object>)player.get("game")));
 		
 		if (player.containsKey("user"))
 			this.setUser(new User((Map<String, Object>)player.get("user")));
+		
+		if (player.containsKey("team"))
+			this.setTeam(new Team((Map<String, Object>)player.get("team")));
 	}
 
 	/**
@@ -149,8 +153,8 @@ public class Player extends Mapping implements Parcelable {
 		this.setId(in.readInt());
 		this.setName(in.readString());
 		this.setGame((Game)in.readParcelable(Game.class.getClassLoader()));
-		this.setLatitude(in.readFloat());
-		this.setLatitude(in.readFloat());
+		this.setLatitude(in.readDouble());
+		this.setLongitude(in.readDouble());
 		this.setScore(in.readInt());
 		this.setTime(in.readString());
 		this.setUser((User)in.readParcelable(Game.class.getClassLoader()));
@@ -188,11 +192,11 @@ public class Player extends Mapping implements Parcelable {
 
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeInt(this.getId());	
+		dest.writeInt(this.getId());
 		dest.writeString(this.getName());
 		dest.writeParcelable(this.getGame(), 0);
-		dest.writeFloat(this.getLatitude());
-		dest.writeFloat(this.getLongitude());
+		dest.writeDouble(this.getLatitude());
+		dest.writeDouble(this.getLongitude());
 		dest.writeInt(this.getScore());
 		dest.writeString(this.getTime());
 		dest.writeParcelable(this.getUser(), 0);
@@ -201,14 +205,14 @@ public class Player extends Mapping implements Parcelable {
 	/**
 	 * @return the longitude
 	 */
-	public float getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
 	/**
 	 * @param longitude the longitude to set
 	 */
-	public void setLongitude(Float longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 		
 		this.setAttribute("longitude", longitude);
@@ -217,14 +221,14 @@ public class Player extends Mapping implements Parcelable {
 	/**
 	 * @return the latitude
 	 */
-	public float getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
 	/**
 	 * @param latitude the latitude to set
 	 */
-	public void setLatitude(Float latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 		
 		this.setAttribute("latitude", latitude);
@@ -261,4 +265,19 @@ public class Player extends Mapping implements Parcelable {
 		
 		this.setAttribute("photo", photo);
 	}
+	
+	/**
+	 * @return the team
+	 */
+	public Team getTeam() {
+		return team;
+	}
+
+	/**
+	 * @param team the team to set
+	 */
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
 }

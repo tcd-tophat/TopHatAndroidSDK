@@ -26,11 +26,7 @@ public class User extends Mapping implements Parcelable {
 	 */
 	public User()
 	{
-		this.setId(null);
-		this.setName(null);
-		this.setCreated(null);
-		this.setEmail(null);
-		this.setJoinedGames(new ArrayList<Game>());
+		super();
 	}
 	
 	/**
@@ -42,10 +38,7 @@ public class User extends Mapping implements Parcelable {
 		super (user);
 		
 		this.joinedGames = new ArrayList<Game>();
-		
-		if (user.containsKey("id"))
-			this.setId((Integer)user.get("id"));
-		
+
 		if (user.containsKey("created"))
 			this.setCreated((String)user.get("created"));
 		
@@ -55,9 +48,9 @@ public class User extends Mapping implements Parcelable {
 		if (user.containsKey("name"))
 			this.setName((String)user.get("name"));
 		
-		if (user.containsKey("joined_games"))
+		if (user.containsKey("games"))
 		{	
-			ArrayList<Map<String, Object>> gameslist = (ArrayList<Map<String, Object>>) user.get("joined_games");
+			ArrayList<Map<String, Object>> gameslist = (ArrayList<Map<String, Object>>) user.get("games");
 			
 			for(Map<String, Object> game : gameslist)
 			{
@@ -142,7 +135,7 @@ public class User extends Mapping implements Parcelable {
 			gamesMap.add(game.getMap());
 		}
 		
-		this.setAttribute("joined_games", gamesMap);
+		this.setAttribute("games", gamesMap);
 	}
 	
 	// Parcelling part
