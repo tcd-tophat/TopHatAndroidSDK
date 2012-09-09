@@ -16,11 +16,11 @@ public class Player extends Mapping implements Parcelable {
 
 	public static String API_URI = "players";
 	private String name;
-	private String photo;
+	private String photo = null;
 	private Game game;
 	private Team team;
-	private Double latitude;
-	private Double longitude;
+	private Double latitude = 0.0;
+	private Double longitude = 0.0;
 	
 	/**
 	 * Provided under the map key of "score" in the highest level, provided as an Integer.

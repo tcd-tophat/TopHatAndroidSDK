@@ -19,10 +19,15 @@ public abstract class Mapper {
 	{
 		return new Mapping(data);
 	}
+	
+	public Mapping get(Mapping m) throws HttpException
+	{
+		return this.get(m, m.getId());
+	}
 
 	public Mapping get(Mapping m, Integer id) throws HttpException
 	{
-		return this.creator(this.getApiCommunicator().get(m.getAccessUrl()+"/"+m.getId()));
+		return this.creator(this.getApiCommunicator().get(m.getAccessUrl()+"/"+id));
 	}
 	
 	public Mapping create(Mapping m) throws HttpException
