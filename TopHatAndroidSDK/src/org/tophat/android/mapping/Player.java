@@ -25,7 +25,7 @@ public class Player extends Mapping implements Parcelable {
 	/**
 	 * Provided under the map key of "score" in the highest level, provided as an Integer.
 	 */
-	private Integer score;
+	private Integer score = 0;
 
 	/**
 	 * @return the score
@@ -78,7 +78,7 @@ public class Player extends Mapping implements Parcelable {
 	/**
 	 * Provided under the map key of "time" in the highest level, as a date formatted in standard python datetime to String
 	 */
-	private String time;
+	private String time = "";
 	
 	/**
 	 * Provided under the map key of "user" in the highest level.
