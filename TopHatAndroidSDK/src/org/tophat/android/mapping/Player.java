@@ -247,7 +247,8 @@ public class Player extends Mapping implements Parcelable {
 	public void setGame(Game game) {
 		this.game = game;
 		
-		this.setAttribute("game", game.getMap());
+		if ( game != null)
+			this.setAttribute("game", game.getMap());
 	}
 
 	/**
